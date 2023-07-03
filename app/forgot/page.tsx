@@ -1,6 +1,7 @@
 'use client';
 import React from "react";
 import Link from "next/link";
+import BackgroundRight from "../components/bg_right";
 
 export default function ForgotPassword() {
 const handleSubmit = (e: { preventDefault: () => void; }) => {
@@ -37,13 +38,7 @@ return (
         </form>
         </div>
     </div>
-    <div className="hidden md:block md:flex-1 relative">
-        <img
-        src="https://besthqwallpapers.com/Uploads/12-2-2022/188648/kfc-red-logo-4k-red-brickwall-kfc-logo-brands.jpg"
-        alt="petrilab_bg"
-          className="object-cover w-full h-full"
-        />
-    </div>
+    <BackgroundRight/>
     </div>
 );
 }

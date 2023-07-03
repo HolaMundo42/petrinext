@@ -3,6 +3,9 @@ import Link from "next/link";
 import React, { useState } from "react";
 import PasswordToggle from "../components/PasswordToggle";
 import RememberMeCheckbox from "../components/RememberMeCheckbox";
+import BackgroundRight from "../components/bg_right";
+import PasswordStrengthBar from "react-password-strength-bar";
+import PasswordInput from "../components/PasswordInput";
 
 interface FormInputProps {
   label: string;
@@ -67,9 +70,8 @@ const Register: React.FC = () => {
               showPassword={showPassword}
               handlePasswordToggle={handlePasswordToggle}
             />
-            <FormInput
+            <PasswordInput
               label="Password"
-              placeholder=""
               type="password"
               showPassword={showPassword}
               handlePasswordToggle={handlePasswordToggle}
@@ -98,13 +100,7 @@ const Register: React.FC = () => {
           </form>
         </div>
       </div>
-      <div className="hidden md:block md:flex-1 relative">
-        <img
-          src="https://besthqwallpapers.com/Uploads/12-2-2022/188648/kfc-red-logo-4k-red-brickwall-kfc-logo-brands.jpg"
-          alt="petrilab_bg"
-          className="object-cover w-full h-full"
-        />
-      </div>
+      <BackgroundRight/>
     </div>
   );
 };
