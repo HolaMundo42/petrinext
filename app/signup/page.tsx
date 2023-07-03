@@ -6,6 +6,7 @@ import RememberMeCheckbox from "../components/RememberMeCheckbox";
 
 interface FormInputProps {
   label: string;
+  placeholder: string;
   type: string;
   showPassword: boolean;
   handlePasswordToggle: () => void;
@@ -13,6 +14,7 @@ interface FormInputProps {
 
 const FormInput: React.FC<FormInputProps> = ({
   label,
+  placeholder,
   type,
   showPassword,
   handlePasswordToggle,
@@ -24,6 +26,7 @@ const FormInput: React.FC<FormInputProps> = ({
     <div className="mb-2 relative">
       <input
         type={type === "password" && showPassword ? "text" : type}
+        placeholder={placeholder}
         className="block w-full px-4 py-2 mt-2 text-gray-700 bg-txtbox_bg_color border rounded-md focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
       />
       {type === "password" && (
@@ -52,24 +55,28 @@ const Register: React.FC = () => {
           <form className="mt-6 w-full max-w-sm">
             <FormInput
               label="Name"
+              placeholder="Pollo Pérez"
               type="text"
               showPassword={showPassword}
               handlePasswordToggle={handlePasswordToggle}
             />
             <FormInput
               label="Email"
+              placeholder="petrilab@example.com"
               type="email"
               showPassword={showPassword}
               handlePasswordToggle={handlePasswordToggle}
             />
             <FormInput
               label="Password"
+              placeholder=""
               type="password"
               showPassword={showPassword}
               handlePasswordToggle={handlePasswordToggle}
             />
             <FormInput
               label="Check Password"
+              placeholder=""
               type="password"
               showPassword={showPassword2}
               handlePasswordToggle={handlePasswordToggle2}

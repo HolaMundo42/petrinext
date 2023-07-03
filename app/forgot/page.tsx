@@ -19,6 +19,7 @@ return (
             </label>
             <input
                 type="email"
+                placeholder="petrilab@example.com"
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-txtbox_bg_color border rounded-md focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
             </div>
