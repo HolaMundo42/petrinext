@@ -10,8 +10,8 @@ const handleSubmit = (e: { preventDefault: () => void; }) => {
 
 return (
     <div className="relative flex flex-col md:flex-row items-stretch md:h-screen overflow-hidden bg-gray-100">
-    <div className="w-full md:w-96 md:flex-shrink-0 bg-txtbox_bg_color rounded-md shadow-md">
-        <div className="flex flex-col justify-center items-center h-auto p-8 md:p-16">
+    <div className="w-full md:w-96 md:flex-shrink-0 bg-bg_color rounded-md shadow-md">
+    <div className="flex flex-col justify-center items-center h-[100vh] p-8 md:p-16">
         <h1 className="text-3xl font-bold text-center text-gray-700">PetriLab</h1>
         <form className="mt-6 w-full max-w-sm" onSubmit={handleSubmit}>
             <div className="mb-4">

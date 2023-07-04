@@ -31,6 +31,7 @@ const PasswordInput: React.FC<FormInputProps> = ({
         <input
           type={type === "password" && showPassword ? "text" : type}
           value={password}
+          placeholder = "********"
           onChange={handleChangePassword}
           className="block w-full px-4 py-2 mt-2 text-gray-700 bg-txtbox_bg_color border rounded-md focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
         />
