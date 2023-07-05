@@ -6,7 +6,7 @@ const BackgroundRight = () => {
       <img
         src="https://wallpaperaccess.com/full/824561.jpg"
         alt="petrilab_bg"
-        className="object-cover w-full h-full"
+        className="object-cover w-[100%] h-full"
       />
     </div>
   );

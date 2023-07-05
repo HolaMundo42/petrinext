@@ -13,6 +13,7 @@ interface FormInputProps {
   type: string;
   showPassword: boolean;
   handlePasswordToggle: () => void;
+  onChangeValue: (form: string) => void;
 }
 
 const FormInput: React.FC<FormInputProps> = ({
@@ -21,16 +22,25 @@ const FormInput: React.FC<FormInputProps> = ({
   type,
   showPassword,
   handlePasswordToggle,
-}) => (
+  onChangeValue,
+}) => {
+  const handleValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChangeValue(e.target.value);
+  };
+  
+  return(
   <div className="mb-4">
     <label htmlFor={label.toLowerCase()} className="block text-sm font-semibold text-gray-800">
       {label}
     </label>
     <div className="mb-2 relative">
       <input
+        id={label.toLowerCase()}
         type={type === "password" && showPassword ? "text" : type}
         placeholder={placeholder}
         className="block w-full px-4 py-2 mt-2 text-gray-700 bg-txtbox_bg_color border rounded-md focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
+        onChange={handleValueChange}
+        required
       />
       {type === "password" && (
         <PasswordToggle showPassword={showPassword} handlePasswordToggle={handlePasswordToggle} />
@@ -38,8 +48,13 @@ const FormInput: React.FC<FormInputProps> = ({
     </div>
   </div>
 );
+}
 
 const Register: React.FC = () => {
+  const[name, setName] = useState('')
+  const[email, setEmail] = useState('')
+  const[password, setPassword] = useState('')
+  const[password2, setPassword2] = useState('')
   const [showPassword, setShowPassword] = useState(false);
   const [showPassword2, setShowPassword2] = useState(false);
   
@@ -56,25 +71,35 @@ const Register: React.FC = () => {
         <div className="flex flex-col justify-center items-center h-[100vh] p-8 md:p-16">
           <h1 className="text-3xl font-bold text-center text-gray-700">PetriLab</h1>
           <form className="mt-6 w-full max-w-sm">
+            vars
+            {name}<br/>
+            {email}<br/>
+            {password}<br/>
+            {password2}
             <FormInput
               label="Name"
               placeholder="Pollo Pérez"
               type="text"
               showPassword={showPassword}
               handlePasswordToggle={handlePasswordToggle}
-            />
+              onChangeValue={setName}
+              />
+            
             <FormInput
               label="Email"
               placeholder="petrilab@example.com"
               type="email"
               showPassword={showPassword}
               handlePasswordToggle={handlePasswordToggle}
+              onChangeValue={setEmail}
             />
+            
             <PasswordInput
               label="Password"
               type="password"
               showPassword={showPassword}
               handlePasswordToggle={handlePasswordToggle}
+              onChangeValue={setPassword}
             />
             <FormInput
               label="Check Password"
@@ -82,6 +107,7 @@ const Register: React.FC = () => {
               type="password"
               showPassword={showPassword2}
               handlePasswordToggle={handlePasswordToggle2}
+              onChangeValue={setPassword2}
             />
             <div className="flex items-center mb-4">
               <RememberMeCheckbox label="I agree to the terms and conditions" htmlFor="terms" />

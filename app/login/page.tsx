@@ -4,23 +4,11 @@ import Link from "next/link";
 import RememberMeCheckbox from "../components/RememberMeCheckbox";
 import BackgroundRight from "../components/bg_right";
 import PasswordInput from "../components/PasswordInput";
-
-function EmailInput() {
-  return (
-    <div className="mb-4">
-      <label htmlFor="email" className="block text-sm font-semibold text-gray-800">
-        Email
-      </label>
-      <input
-        type="email"
-        placeholder="petrilab@example.com"
-        className="block w-full px-4 py-2 mt-2 text-gray-700 bg-txtbox_bg_color border rounded-md focus:border-gray-400 focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
-      />
-    </div>
-  );
-}
+import EmailInput from "../components/EmailInput";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   
   const handlePasswordToggle = () => {
@@ -33,13 +21,13 @@ export default function Login() {
         <div className="flex flex-col justify-center items-center h-[100vh] p-8 md:p-16">
           <h1 className="text-3xl font-bold text-center text-gray-700">PetriLab</h1>
           <form className="mt-6 w-full max-w-sm">
-            <EmailInput />
-            
+            <EmailInput onChangeValue={setEmail}/>   
             <PasswordInput
               label="Password"
               type="password"
               showPassword={showPassword}
               handlePasswordToggle={handlePasswordToggle}
+              onChangeValue={setPassword}
             />
             
             <RememberMeCheckbox htmlFor="RememberMe"/>
@@ -62,7 +50,9 @@ export default function Login() {
             </p>
             
             <div className="my-4 border-b border-gray-300"></div>
-            <div className="mt-6">
+          </form>
+          <form className="w-full max-w-sm">
+          <div className="mt-6">
               <button className="w-full px-4 py-2 flex items-center justify-center text-white bg-red-600 rounded-md hover:bg-red-500 focus:outline-none">
                 Sign In with Google
               </button>
