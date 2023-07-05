@@ -71,11 +71,6 @@ const Register: React.FC = () => {
         <div className="flex flex-col justify-center items-center h-[100vh] p-8 md:p-16">
           <h1 className="text-3xl font-bold text-center text-gray-700">PetriLab</h1>
           <form className="mt-6 w-full max-w-sm">
-            vars
-            {name}<br/>
-            {email}<br/>
-            {password}<br/>
-            {password2}
             <FormInput
               label="Name"
               placeholder="Pollo Pérez"
@@ -102,7 +97,7 @@ const Register: React.FC = () => {
               onChangeValue={setPassword}
             />
             <FormInput
-              label="Check Password"
+              label="Confirm Password"
               placeholder="********"
               type="password"
               showPassword={showPassword2}

@@ -60,7 +60,7 @@ export default function Login() {
             
             <div className="mt-6">
               <button className="w-full px-4 py-2 flex items-center justify-center text-white bg-gray-900 rounded-md hover:bg-gray-800 focus:outline-none">
-                Sign In with Apple
+                Sign In with Github
               </button>
             </div>
           </form>
