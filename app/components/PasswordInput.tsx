@@ -8,6 +8,7 @@ interface FormInputProps {
   showPassword: boolean;
   handlePasswordToggle: () => void;
   onChangeValue: (password: string) => void;
+  showStrength: string;
 }
 
 const PasswordInput: React.FC<FormInputProps> = ({
@@ -16,9 +17,11 @@ const PasswordInput: React.FC<FormInputProps> = ({
   showPassword,
   handlePasswordToggle,
   onChangeValue,
+  showStrength,
 }) => {
   const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChangeValue(e.target.value);
+    setPassword(e.target.value);
   };
   const [password, setPassword] = useState("");
   const [passwordStrength, setPasswordStrength] = useState(0);
@@ -42,9 +45,9 @@ const PasswordInput: React.FC<FormInputProps> = ({
           <PasswordToggle showPassword={showPassword} handlePasswordToggle={handlePasswordToggle} />
         )}
       </div>
-      {type === "password" && (
+      {type === "password" && showStrength == "true" && (
         <div className="mt-2">
-          <PasswordStrengthBar password={password} onChangeScore={setPasswordStrength} />
+          <PasswordStrengthBar password={password} onChangeScore={setPasswordStrength}/>
         </div>
       )}
     </div>

@@ -28,6 +28,7 @@ export default function Login() {
               showPassword={showPassword}
               handlePasswordToggle={handlePasswordToggle}
               onChangeValue={setPassword}
+              showStrength={"false"}
             />
             
             <RememberMeCheckbox htmlFor="RememberMe"/>

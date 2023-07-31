@@ -95,6 +95,7 @@ const Register: React.FC = () => {
               showPassword={showPassword}
               handlePasswordToggle={handlePasswordToggle}
               onChangeValue={setPassword}
+              showStrength={"true"}
             />
             <FormInput
               label="Confirm Password"
