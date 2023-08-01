@@ -26,11 +26,15 @@ const FormInput: React.FC<FormInputProps> = ({
 }) => {
   const handleValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChangeValue(e.target.value);
+    var idd = document.getElementById(label.toLowerCase())
+    if (idd != null) {
+      idd.style.color = "rgb(31, 41, 55)";
+    }
   };
   
   return(
   <div className="mb-4">
-    <label htmlFor={label.toLowerCase()} className="block text-sm font-semibold text-gray-800">
+    <label id={label.toLowerCase()+"label"} htmlFor={label.toLowerCase()} className="block text-sm font-semibold text-gray-800">
       {label}
     </label>
     <div className="mb-2 relative">
@@ -64,15 +68,82 @@ const Register: React.FC = () => {
   const handlePasswordToggle2 = () => {
     setShowPassword2(!showPassword2);
   };
+
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    var fullname = document.getElementById("full name")
+    var fullname_label = document.getElementById("full namelabel")
+    
+    var password_id_label = document.getElementById("passwordlabel")
+    var password2_id_label = document.getElementById("confirm passwordlabel")
+
+    var colorr = "rgb(31, 41, 55)"
+    
+    if (fullname != null && fullname_label != null) {
+      fullname_label.textContent = "Full Name"
+      fullname_label.style.color = colorr
+      fullname_label.style.fontStyle = "normal"
+    }
+    if (password2_id_label != null && password_id_label != null) {
+      password_id_label.textContent = "Password"
+      password_id_label.style.color = colorr
+      password_id_label.style.fontStyle = "normal"
+
+      password2_id_label.style.color = colorr
+      password2_id_label.style.fontStyle = "normal"
+    }
+
+
+    if (!(name.indexOf(' ') >= 0)){
+      if (fullname != null && fullname_label != null) {
+        fullname_label.textContent = "Full Name *Fill in a full name"
+        fullname_label.style.color = "red"
+        fullname_label.style.fontStyle = "italic"
+        fullname.style.color = "red"
+      }
+      return false;
+    }
+
+    if (!(password.length > 3 && password.length < 17)){
+      if (password2_id_label != null && password_id_label != null) {
+        password_id_label.textContent = "Password *Must be 4-16 characters"
+        password_id_label.style.color = "red"
+        password_id_label.style.fontStyle = "italic"
+      }
+      return false
+    }
+
+    if (password != password2){
+
+      if (password2_id_label != null && password_id_label != null) {
+        password_id_label.textContent = "Password *Passwords don't match"
+        password_id_label.style.color = "red"
+        password_id_label.style.fontStyle = "italic"
+
+        password2_id_label.style.color = "red"
+        password2_id_label.style.fontStyle = "italic"
+      }
+      return false;
+    }
+
+    else{
+      alert("Signed In Successfully!")
+      const userData = {
+        name : name,
+        email: email,
+        password: password,
+      };
+    }
+  };
   
   return (
     <div className="relative flex flex-col md:flex-row items-stretch md:h-screen overflow-hidden bg-gray-100">
       <div className="w-full h-screen md:w-96 md:flex-shrink-0 bg-bg_color rounded-md shadow-md">
         <div className="flex flex-col justify-center items-center h-[100vh] p-8 md:p-16">
           <h1 className="text-3xl font-bold text-center text-gray-700">PetriLab</h1>
-          <form className="mt-6 w-full max-w-sm">
+          <form className="mt-6 w-full max-w-sm" onSubmit={handleFormSubmit}>
             <FormInput
-              label="Name"
+              label="Full Name"
               placeholder="Pollo Pérez"
               type="text"
               showPassword={showPassword}

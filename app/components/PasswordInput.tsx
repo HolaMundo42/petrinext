@@ -29,7 +29,7 @@ const PasswordInput: React.FC<FormInputProps> = ({
 
   return (
     <div className="mb-4">
-      <label htmlFor={label.toLowerCase()} className="block text-sm font-semibold text-gray-800">
+      <label id={label.toLowerCase()+"label"} htmlFor={label.toLowerCase()} className="block text-sm font-semibold text-gray-800">
         {label}
       </label>
       <div className="mb-2 relative">
