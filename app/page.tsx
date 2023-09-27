@@ -7,8 +7,15 @@ import LandingPage from './components/landing_page'
 export default function Home() {
   const [loggedIn, setLoggedIn] = useState(false);
 
+  const toggleLoggedIn = () => {
+    setLoggedIn(!loggedIn); // Toggle the state (true to false, false to true)
+  };
+
   return (
     <div className={`bg-txtbox_bg_color_2 ${loggedIn ? 'logged-in' : 'anonymous'}`}>
+      <button onClick={toggleLoggedIn}>
+        {loggedIn ? 'Log Out' : 'Log In'}
+      </button>
       {loggedIn ? (
         // Content for logged users
         <Menu/>

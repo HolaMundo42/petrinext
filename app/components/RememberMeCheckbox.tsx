@@ -14,7 +14,7 @@ const RememberMeCheckbox: React.FC<RememberMeCheckboxProps> = ({ label="Remember
         id={htmlFor}
         className="mr-2 text-gray-700 rounded focus:ring-gray-300"
       />
-      <label htmlFor={htmlFor} className="text-sm text-gray-800 cursor-pointer">
+      <label id={htmlFor+"label"} htmlFor={htmlFor} className="text-sm text-gray-800 cursor-pointer">
         {label}
       </label>
     </div>

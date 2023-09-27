@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import PasswordToggle from "../components/PasswordToggle";
 import RememberMeCheckbox from "../components/RememberMeCheckbox";
 import BackgroundRight from "../components/bg_right";
-import PasswordStrengthBar from "react-password-strength-bar";
 import PasswordInput from "../components/PasswordInput";
+import superagent from 'superagent';
 
 interface FormInputProps {
   label: string;
@@ -71,13 +71,21 @@ const Register: React.FC = () => {
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    let checkboxTerms  =  document.getElementById("terms") as HTMLInputElement;
+    let checkboxTermsLabel  =  document.getElementById("termslabel") as HTMLInputElement;
     var fullname = document.getElementById("full name")
     var fullname_label = document.getElementById("full namelabel")
     
     var password_id_label = document.getElementById("passwordlabel")
     var password2_id_label = document.getElementById("confirm passwordlabel")
-
+    
     var colorr = "rgb(31, 41, 55)"
+    
+    if (checkboxTerms != null && checkboxTermsLabel != null)
+    {
+      checkboxTermsLabel.style.color = "rgb(55 65 81)"
+      checkboxTermsLabel.style.fontStyle = "normal"
+    }
     
     if (fullname != null && fullname_label != null) {
       fullname_label.textContent = "Full Name"
@@ -125,7 +133,14 @@ const Register: React.FC = () => {
       }
       return false;
     }
-
+    
+    if (checkboxTerms.checked != true && checkboxTerms != null)
+    {
+      checkboxTermsLabel.style.color = "red"
+      checkboxTermsLabel.style.fontStyle = "italic"
+      return false
+    }
+    
     else{
       alert("Signed In Successfully!")
       const userData = {
@@ -133,6 +148,32 @@ const Register: React.FC = () => {
         email: email,
         password: password,
       };
+
+      /*superagent
+      .post('https://repo-node.vercel.app/api/users')
+      .send({ name: 'Manny', contra: 'cat', email:"uwu@gmail.com"})
+      .set('uyeZVae97zE3syYFB9pboqQGUnQ', 'foobar')
+      .set('accept', 'json')
+      .end((err, res) => {
+        if (err) {
+          console.error(err);
+        } else {
+          console.log("oaudhasiudfnh");
+        }
+      });*/
+
+      const Http = new XMLHttpRequest();
+      const url = 'https://repo-node.vercel.app/api/users';
+      Http.open("GET", url);
+      Http.send();
+
+      Http.onreadystatechange = (e) => {
+        console.log(Http.responseText);
+      }
+
+      //alert("request sent (check console)")
+
+      //window.location.href = 'https://petrilab.vercel.app/';
     }
   };
   
