@@ -26,7 +26,7 @@ const Navbar: React.FC = () => {
       className={`${
         isScrolled
           ? 'backdrop-blur-sm bg-gray-800/60 hover:bg-gray-800/75 text-slate-200 fixed py-3 w-full z-10 transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.12)]'
-          : 'text-black transition-all py-2 duration-300 shadow-none'
+          : 'bg-[#f4f4f5] text-black transition-all py-2 duration-300 shadow-none'
       }`}
     >
       <div className={`${
@@ -46,15 +46,15 @@ const Navbar: React.FC = () => {
           </a>
         </div>
         <div className="mx-4 flex-grow text-center"></div>
-        <div className="mx-4">
-          <a href="#" className="font-semibold">
-            Login
-          </a>
+        <div className="mx-4 border-2 border-gray rounded-[0.25rem] hover:bg-[#f1f0ee]">
+          <Link href="/login" className="font-semibold text-base p-3 pb-1">
+            Log In
+          </Link>
         </div>
-        <div className="mx-4">
-          <a href="#" className="font-semibold">
-            Register
-          </a>
+        <div className="mx-4 bg-black border-2 border-zinc-900 rounded-[0.25rem] hover:bg-gray-800">
+          <Link href="/signup" className="font-semibold text-orange-50 p-2 pb-1 text-base">
+            Sign Up
+          </Link>
         </div>
       </nav>
     </header>

@@ -17,14 +17,25 @@ export default function Login() {
   
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const Http = new XMLHttpRequest();
-    const url = 'https://repo-node.vercel.app/api/users';
-    Http.open("GET", url);
-    Http.send();
+    // const Http = new XMLHttpRequest();
+    // const url = 'https://repo-node.vercel.app/api/users';
+    // Http.open("GET", url);
+    // Http.send();
 
-    Http.onreadystatechange = (e) => {
-      console.log(Http.responseText);
-    }
+    // Http.onreadystatechange = (e) => {
+    //   console.log(Http.responseText);
+    // }
+    fetch('https://repo-node.vercel.app/api/users', {
+      headers: {
+        "Access-Control-Allow-Origin": "localhost:3000"
+      }
+    }).then((res) => {
+      return res.json();
+    }).then((data) => {
+      console.log(data);
+    }).catch((err) => {
+      console.log(err);
+    })
   };
   
 

@@ -13,9 +13,6 @@ export default function Home() {
 
   return (
     <div className={`bg-txtbox_bg_color_2 ${loggedIn ? 'logged-in' : 'anonymous'}`}>
-      <button onClick={toggleLoggedIn}>
-        {loggedIn ? 'Log Out' : 'Log In'}
-      </button>
       {loggedIn ? (
         // Content for logged users
         <Menu/>
@@ -23,6 +20,9 @@ export default function Home() {
         // Content for anonymous users
         <LandingPage/>
       )}
+      <button onClick={toggleLoggedIn}>
+        {loggedIn ? 'Log Out' : 'Log In'}
+      </button>
     </div>
   );
 }

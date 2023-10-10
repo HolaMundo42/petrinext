@@ -171,7 +171,7 @@ const Register: React.FC = () => {
         console.log(Http.responseText);
       }
 
-      //alert("request sent (check console)")
+      //alert("request sent (che  ck console)")
 
       //window.location.href = 'https://petrilab.vercel.app/';
     }
