@@ -1,11 +1,13 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PasswordToggle from "../components/PasswordToggle";
 import RememberMeCheckbox from "../components/RememberMeCheckbox";
 import BackgroundRight from "../components/bg_right";
 import PasswordInput from "../components/PasswordInput";
-import superagent from 'superagent';
+import hashString from "../components/hasher";
+import { fetchPOST } from "../components/fetch";
+
 
 interface FormInputProps {
   label: string;
@@ -142,37 +144,17 @@ const Register: React.FC = () => {
     }
     
     else{
-      alert("Signed In Successfully!")
+
       const userData = {
         name : name,
         email: email,
-        password: password,
+        password: hashString(password),
       };
-
-      /*superagent
-      .post('https://repo-node.vercel.app/api/users')
-      .send({ name: 'Manny', contra: 'cat', email:"uwu@gmail.com"})
-      .set('uyeZVae97zE3syYFB9pboqQGUnQ', 'foobar')
-      .set('accept', 'json')
-      .end((err, res) => {
-        if (err) {
-          console.error(err);
-        } else {
-          console.log("oaudhasiudfnh");
-        }
-      });*/
-
-      const Http = new XMLHttpRequest();
-      const url = 'https://repo-node.vercel.app/api/users';
-      Http.open("GET", url);
-      Http.send();
-
-      Http.onreadystatechange = (e) => {
-        console.log(Http.responseText);
-      }
-
-      //alert("request sent (che  ck console)")
-
+      
+      fetchPOST(userData);
+      
+      
+      alert("Signed In Successfully!")
       //window.location.href = 'https://petrilab.vercel.app/';
     }
   };
