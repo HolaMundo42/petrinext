@@ -2,6 +2,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faYoutube, faDiscord, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -36,7 +37,7 @@ const Navbar: React.FC = () => {
 
       <nav className="flex items-center justify-between text-base xl:text-lg top-0 font-normal relative">
         <div className="mx-4 flex items-center">
-          <img
+          <Image
             src="https://cdn.icon-icons.com/icons2/2379/PNG/512/petri_dish_experimentation_biology_education_petri_dish_icon_143934.png"
             alt="PetriLab Logo"
             className="h-8 w-8 mr-2"

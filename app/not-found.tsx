@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const NotFound = () => {
     const router = useRouter();
@@ -25,7 +26,7 @@ const NotFound = () => {
 
     return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
-        <img
+        <Image
                 src="/petrilab.png"
                 alt="PL"
                 width={75}

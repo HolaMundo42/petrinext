@@ -21,6 +21,7 @@ PowerIcon,
 } from "@heroicons/react/24/solid";
 import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import Link from 'next/link';
+import Image from "next/image";
 
 interface MenuProps {}
 
@@ -34,7 +35,7 @@ const handleOpen = (value: number) => {
 return (
     <Card className="h-[calc(105vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 fixed flex flex-col">
     <div className="mb-2 flex items-center gap-4 p-4">
-        <img
+        <Image
         src="https://cdn.icon-icons.com/icons2/2379/PNG/512/petri_dish_experimentation_biology_education_petri_dish_icon_143934.png"
         alt="brand"
         className="h-8 w-8"
