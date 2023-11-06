@@ -1,7 +1,6 @@
 "use client";
 import React from 'react';
 import { useEffect } from 'react';
-import Image from 'next/image';
 
 export default function Scan() {
     const backgroundImageUrl = "/bacteria_wp.jpg";
@@ -39,7 +38,7 @@ export default function Scan() {
         <nav className="p-4 text-gray-200">
             <div className="flex justify-between items-center"></div>
             <div className="flex items-center pl-8">
-            <Image
+            <img
                 src="/petrilab.png"
                 alt="PL"
                 width={50}
